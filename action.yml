@@ -1,0 +1,21 @@
+# action.yml
+name: 'Test'
+description: 'Some tests'
+inputs:
+  user:
+    description: 'remote user'
+    required: true
+    default: ''
+  host:
+    description: 'remote host'
+    required: true
+    default: ''
+outputs:
+  error:
+    description: 'error'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.user }}
+    - ${{ inputs.host }}
