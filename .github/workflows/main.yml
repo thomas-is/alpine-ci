@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: A job to do tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test step
+        uses: ./ # Uses an action in the root directory
+        id: alpine-ci
+        with:
+          user: 'user'
+          host: 'host'
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
